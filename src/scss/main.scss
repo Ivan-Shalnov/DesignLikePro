@@ -1,7 +1,21 @@
+@import "reset";
 @import "mixins";
 @import "fonts";
 @import "vendor";
 @import "vars";
 @import "settings";
+
+@function toIndex($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 30));
+  @return $resValue;
+}
+@function toIndexTab($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 17.92));
+  @return $resValue;
+}
+@function toIndexMob($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 11.87));
+  @return $resValue;
+}
 
 @import "./sections/main-section.scss";
