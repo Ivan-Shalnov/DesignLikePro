@@ -1,0 +1,12 @@
+.logo {
+  font-size: 20px;
+  line-height: 96%;
+  /* or 19px */
+
+  letter-spacing: -0.033em;
+
+  color: $grey;
+  &--color-accent {
+    color: $yellow;
+  }
+}

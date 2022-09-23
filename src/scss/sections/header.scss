@@ -1,0 +1,33 @@
+.header {
+  padding-top: 25px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__col {
+    display: flex;
+  }
+  &__text {
+    font-family: "RF Dewi";
+
+    margin-left: 140px;
+    color: $white;
+
+    opacity: 0.16;
+  }
+  &__our-goal {
+    max-width: 240px;
+    text-indent: 35px;
+    font-family: "RF Dewi";
+
+    font-size: 20px;
+    line-height: 106%;
+    /* or 21px */
+
+    letter-spacing: -0.033em;
+
+    /* Yellow */
+
+    color: $yellow;
+  }
+}
