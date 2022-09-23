@@ -6,9 +6,12 @@
 @import "settings";
 
 @import "./sections/main-section.scss";
+
 // COMPONENTS
 @import "./components/logo";
 
 // SECTIONS
 @import "./sections/header.scss";
 @import "./sections/promo-section.scss";
+@import "./sections/price-section.scss";
+@import "./sections//price-card.scss";

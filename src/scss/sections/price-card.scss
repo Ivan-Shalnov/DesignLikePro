@@ -1,0 +1,17 @@
+.price-card {
+  padding: toIndex(30) toIndex(40) toIndex(70);
+  &__subtitle {
+    font-family: "RF Dewi";
+    font-weight: 400;
+    font-size: toIndex(20);
+    line-height: 96%;
+    text-align: right;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    opacity: 0.16;
+    margin-bottom: toIndex(125);
+  }
+  &__title {
+    
+  }
+}

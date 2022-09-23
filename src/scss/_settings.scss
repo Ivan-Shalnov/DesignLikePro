@@ -13,6 +13,20 @@ body {
   font-family: "Manrope", sans-serif;
   background-color: var(--color-black);
   scroll-behavior: smooth;
+  color: #fff;
+}
+
+@function toIndex($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 30));
+  @return $resValue;
+}
+@function toIndexTab($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 17.92));
+  @return $resValue;
+}
+@function toIndexMob($value) {
+  $resValue: calc((1vw + 1vh) * (#{$value} / 11.87));
+  @return $resValue;
 }
 
 img {
@@ -50,9 +64,7 @@ a {
 }
 
 .container {
-  margin: 0 auto;
-  padding: 0 30px;
-  // max-width: 1200px;
+  padding: 0 toIndex(30);
 }
 
 .js-focus-visible :focus:not(.focus-visible) {
