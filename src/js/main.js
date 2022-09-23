@@ -8,7 +8,9 @@ import "../scss/main.scss";
 import "../index.html";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
+gsap.config({
+  force3D: true,
+});
 ScrollSmoother.create({
   smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
   effects: true, // looks for data-speed and data-lag attributes on elements

@@ -1,28 +1,29 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack');
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack");
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
-const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
+const filename = (ext) =>
+  isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
 
 const optimization = () => {
   const configObj = {
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: "all",
+    },
   };
 
   if (isProd) {
     configObj.minimizer = [
       new OptimizeCssAssetWebpackPlugin(),
-      new TerserWebpackPlugin()
+      new TerserWebpackPlugin(),
     ];
   }
 
@@ -32,20 +33,23 @@ const optimization = () => {
 const plugins = () => {
   const basePlugins = [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
-      filename: 'index.html',
+      template: path.resolve(__dirname, "src/index.html"),
+      filename: "index.html",
       minify: {
-        collapseWhitespace: isProd
-      }
+        collapseWhitespace: isProd,
+      },
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: `./css/${filename('css')}`
+      filename: `./css/${filename("css")}`,
     }),
     new CopyWebpackPlugin({
       patterns: [
-        {from: path.resolve(__dirname, 'src/assets') , to: path.resolve(__dirname, 'app')}
-      ]
+        {
+          from: path.resolve(__dirname, "src/assets"),
+          to: path.resolve(__dirname, "app"),
+        },
+      ],
     }),
   ];
 
@@ -64,45 +68,47 @@ const plugins = () => {
               {
                 plugins: [
                   {
-                    removeViewBox: false
-                  }
-                ]
-              }
-            ]
-          ]
-        }
+                    removeViewBox: false,
+                  },
+                ],
+              },
+            ],
+          ],
+        },
       })
-    )
+    );
   }
 
   return basePlugins;
 };
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  mode: 'development',
-  entry: './js/main.js',
+  context: path.resolve(__dirname, "src"),
+  mode: "development",
+  entry: "./js/main.js",
   output: {
-    filename: `./js/${filename('js')}`,
-    path: path.resolve(__dirname, 'app'),
-    publicPath: ''
+    filename: `./js/${filename("js")}`,
+    path: path.resolve(__dirname, "app"),
+    publicPath: "",
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'app'),
+    contentBase: path.resolve(__dirname, "app"),
     open: true,
     compress: true,
     hot: true,
     port: 3000,
+    disableHostCheck: true,
+    useLocalIp: true,
   },
   optimization: optimization(),
   plugins: plugins(),
-  devtool: isProd ? false : 'source-map',
+  devtool: isProd ? false : "source-map",
   module: {
     rules: [
       {
         test: /\.html$/,
-        loader: 'html-loader',
+        loader: "html-loader",
       },
       {
         test: /\.css$/i,
@@ -110,10 +116,10 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: isDev
+              hmr: isDev,
             },
           },
-          'css-loader'
+          "css-loader",
         ],
       },
       {
@@ -123,37 +129,41 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: (resourcePath, context) => {
-                return path.relative(path.dirname(resourcePath), context) + '/';
+                return path.relative(path.dirname(resourcePath), context) + "/";
               },
-            }
+            },
           },
-          'css-loader',
-          'sass-loader'
+          "css-loader",
+          "sass-loader",
         ],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: `./img/${filename('[ext]')}`
-          }
-        }],
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: `./img/${filename("[ext]")}`,
+            },
+          },
+        ],
       },
       {
         test: /\.(?:|woff2)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: `./fonts/${filename('[ext]')}`
-          }
-        }],
-      }
-    ]
-  }
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: `./fonts/${filename("[ext]")}`,
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

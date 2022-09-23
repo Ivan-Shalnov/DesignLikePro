@@ -3,6 +3,9 @@
   overflow: hidden;
   //   padding: 5vh 0;
   &__title {
+    margin-left: -0.09em;
+    margin-right: -0.09em;
+    padding: 0 30px;
     font-family: "RF Dewi";
     font-size: 76vh;
     line-height: 1;
@@ -57,7 +60,7 @@
     display: block;
     width: 0.61%;
     position: absolute;
-    right: 3.25%;
+    right: 2.9%;
     top: 52%;
     z-index: 3;
     img {
