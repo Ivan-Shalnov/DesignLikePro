@@ -1,13 +1,14 @@
 .promo {
+  margin-top: -60px;
   overflow: hidden;
   //   padding: 5vh 0;
   &__title {
     font-family: "RF Dewi";
-    font-size: 90vh;
+    font-size: 76vh;
     line-height: 1;
     vertical-align: middle;
     letter-spacing: -0.09em;
-    color: #ffffff;
+    color: $white;
     white-space: nowrap;
   }
   &__wrap {
@@ -21,7 +22,7 @@
     top: 0;
     left: 3.3%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-end;
   }
   &__img {
@@ -32,6 +33,24 @@
     max-height: 100%;
     &:nth-child(even) {
       align-self: flex-start;
+    }
+    &:nth-child(1) {
+      margin-left: 3.71%;
+    }
+    &:nth-child(2) {
+      margin-left: 5.04%;
+    }
+    &:nth-child(3) {
+      margin-left: 9.25%;
+    }
+    &:nth-child(4) {
+      margin-left: 9.25%;
+    }
+    &:nth-child(5) {
+      margin-left: 12.25%;
+    }
+    &:nth-child(6) {
+      margin-left: 7.25%;
     }
   }
 }

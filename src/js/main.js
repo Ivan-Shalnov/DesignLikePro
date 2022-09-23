@@ -20,11 +20,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const wrapRef = document.querySelector(".promo__wrap");
     const imgsRefs = wrapRef.querySelectorAll(".promo__img");
     const getScrollLength = () =>
-      wrapRef.scrollWidth - document.body.clientWidth;
+      ((wrapRef.scrollWidth - document.body.clientWidth) / 100) * 97.5;
     const promoTl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".promo",
-        start: "center center",
+        trigger: ".pin-wrap",
+        start: "top top",
         end: () => getScrollLength() + "px",
         scrub: 1,
         pin: true,

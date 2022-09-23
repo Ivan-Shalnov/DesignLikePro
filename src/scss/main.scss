@@ -1,7 +1,15 @@
+// RESET
+@import "reset-css/sass/reset";
+
 @import "mixins";
 @import "fonts";
 @import "vendor";
 @import "vars";
 @import "settings";
 
+// COMPONENTS
+@import "./components/logo";
+
+// SECTIONS
+@import "./sections/header.scss";
 @import "./sections/promo-section.scss";
