@@ -53,4 +53,17 @@
       margin-left: 7.25%;
     }
   }
+  &__logo-svitlo {
+    display: block;
+    width: 0.61%;
+    position: absolute;
+    right: 3.25%;
+    top: 52%;
+    z-index: 3;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 }
