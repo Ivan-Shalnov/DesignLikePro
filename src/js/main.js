@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
           containerAnimation: promoTl,
           start: "left right",
           scrub: true,
-          markers: true,
+          // markers: true,
           horizontal: true,
         },
       });

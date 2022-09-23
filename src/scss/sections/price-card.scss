@@ -1,6 +1,7 @@
 .price-card {
   padding: toIndex(30) toIndex(40) toIndex(70);
-  &__subtitle {
+  border-radius: 3px;
+  &__type {
     font-family: "RF Dewi";
     font-weight: 400;
     font-size: toIndex(20);
@@ -12,6 +13,132 @@
     margin-bottom: toIndex(125);
   }
   &__title {
-    
+    font-weight: 500;
+    font-size: toIndex(50);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #ffffff;
+    margin-bottom: toIndex(20);
+  }
+  &__line {
+    border-bottom: toIndex(4) solid #fff;
+    margin-bottom: toIndex(40);
+  }
+  &__list {
+    margin-bottom: toIndex(55);
+  }
+  &__list-item {
+    &:not(:last-child) {
+      margin-bottom: toIndex(20);
+    }
+    h4 {
+      font-family: "RF Dewi";
+      font-style: normal;
+      font-weight: 400;
+      font-size: toIndex(20);
+      line-height: 150%;
+      letter-spacing: -0.033em;
+      color: #fff;
+    }
+    p {
+      font-family: "RF Dewi";
+      font-style: normal;
+      font-weight: 400;
+      font-size: toIndex(20);
+      line-height: 150%;
+      letter-spacing: -0.033em;
+      color: #505b5e;
+    }
+    &.disabled {
+      user-select: none;
+      h4,
+      p {
+        color: #162123;
+      }
+    }
+  }
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 66px;
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    gap: toIndex(8);
+    margin-bottom: toIndex(35);
+    .new {
+      color: #fff;
+    }
+    .old {
+      color: #2f3739;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        border-bottom: toIndex(4) solid #2f3739;
+      }
+    }
+  }
+  .btn {
+    &:not(:last-child) {
+      margin-bottom: toIndex(20);
+    }
+  }
+  &--standart {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  &--premium {
+    background: var(--color-yellow);
+    .price-card {
+      &__type {
+        color: #040d0f;
+      }
+      &__title {
+        color: var(--color-black);
+      }
+      &__line {
+        border-bottom-color: var(--color-black);
+      }
+      &__list {
+        h4 {
+          color: var(--color-black);
+        }
+        p {
+          color: #a99f2f;
+        }
+      }
+      &__list-item.disabled {
+        h4,
+        p {
+          color: #d4c61f;
+        }
+      }
+      &__value {
+        .new {
+          color: var(--color-black);
+        }
+        .old {
+          color: #a99f2f;
+          &::after {
+            border-bottom-color: #a99f2f;
+          }
+        }
+      }
+    }
+  }
+  &--mentoring {
+    background: #192224;
+    .btn--fill-yellow {
+      &::before {
+        background-color: #192224;
+      }
+    }
   }
 }

@@ -16,6 +16,27 @@ body {
   color: #fff;
 }
 
+* {
+  &::-webkit-scrollbar {
+    width: toIndex(8);
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #000;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #000;
+  }
+}
+
 @function toIndex($value) {
   $resValue: calc((1vw + 1vh) * (#{$value} / 30));
   @return $resValue;
