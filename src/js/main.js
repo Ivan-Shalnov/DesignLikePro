@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const priceTitleTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".price-section__title",
-        start: "top 50%",
+        start: "top 65%",
         end: "bottom bottom",
         toggleActions: "play none none reverse",
       },
