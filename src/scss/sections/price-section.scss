@@ -19,6 +19,11 @@
         margin-left: toIndex(450);
       }
     }
+    h2 {
+      div {
+        overflow: hidden;
+      }
+    }
   }
   &__subtitle {
     font-family: "RF Dewi";

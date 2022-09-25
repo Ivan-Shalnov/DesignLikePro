@@ -3,11 +3,12 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "../js/ScrollSmoother";
+import SplitText from "../js/SplitText";
 
 import "../scss/main.scss";
 import "../index.html";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 gsap.config({
   force3D: true,
 });
@@ -55,4 +56,30 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
   // PROMO SECTION
+  // PRICE SECTION START
+  {
+    const priceTitleTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".price-section",
+          start: "top 50%",
+          end: "bottom bottom",
+          toggleActions: "play none none reverse",
+          markers: true,
+        },
+      }),
+      mySplitText = new SplitText(".price-section__title h2", {
+        type: "words",
+      }),
+      words = mySplitText.words;
+
+    console.log(words);
+
+    priceTitleTl.staggerFrom(
+      words,
+      0.6,
+      { opacity: 0, y: "100%", yoyo: true },
+      0.075
+    );
+  }
+  // PRICE SECTION END
 });
