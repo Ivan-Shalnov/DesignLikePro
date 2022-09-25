@@ -5,6 +5,8 @@
   &__title {
     margin-left: -0.09em;
     margin-right: -0.09em;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 0 30px;
     font-family: "RF Dewi";
     font-size: 76vh;
@@ -67,6 +69,23 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 1024px) {
+  .promo {
+    padding-top: 12vh;
+    &__title {
+      font-size: 52vh;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .promo {
+    &__title {
+      font-size: 76vh;
     }
   }
 }
