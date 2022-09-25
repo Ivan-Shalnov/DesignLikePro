@@ -16,9 +16,9 @@ body {
   color: #fff;
 }
 
-* {
+html {
   &::-webkit-scrollbar {
-    width: toIndex(8);
+    width: 8px;
   }
 
   /* Track */
@@ -28,12 +28,7 @@ body {
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: #000;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #000;
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
