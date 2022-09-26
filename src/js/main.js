@@ -61,27 +61,33 @@ window.addEventListener("DOMContentLoaded", () => {
   // PRICE SECTION START
   {
     const priceTitleTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".price-section",
-          start: "top 50%",
-          end: "bottom bottom",
-          toggleActions: "play none none reverse",
-          markers: true,
-        },
-      }),
-      mySplitText = new SplitText(".price-section__title h2", {
-        type: "words",
-      }),
-      words = mySplitText.words;
+      scrollTrigger: {
+        trigger: ".price-section__title",
+        start: "top 65%",
+        end: "bottom bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+    new SplitText(".price-section__title li h2", {
+      type: "words, chars",
+      charsClass: "word",
+    });
 
-    console.log(words);
-
-    priceTitleTl.staggerFrom(
-      words,
-      0.6,
-      { opacity: 0, y: "100%", yoyo: true },
-      0.075
-    );
+    priceTitleTl
+      .addLabel("start" + 0.15)
+      .staggerFrom(
+        ".price-section__title li h2 div",
+        0.8,
+        { y: "100%", ease: "Power2.easeInOut", yoyo: true },
+        0.01
+      )
+      .staggerFrom(
+        ".price-section__subtitle li p",
+        0.4,
+        { opacity: 0, ease: "Bounce.inOut", y: "100%" },
+        0.1,
+        "start"
+      );
   }
   // PRICE SECTION END
 });

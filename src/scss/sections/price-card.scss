@@ -1,10 +1,14 @@
 .price-card {
-  padding: toIndex(30) toIndex(40) toIndex(70);
+  padding: toIndex(50) toIndex(60) toIndex(140);
   border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   &__type {
     font-family: "RF Dewi";
     font-weight: 400;
-    font-size: toIndex(20);
+    font-size: toIndex(35);
     line-height: 96%;
     text-align: right;
     letter-spacing: -0.033em;
@@ -14,28 +18,28 @@
   }
   &__title {
     font-weight: 500;
-    font-size: toIndex(50);
+    font-size: toIndex(80);
     line-height: 96%;
     letter-spacing: -0.033em;
     color: #ffffff;
-    margin-bottom: toIndex(20);
+    margin-bottom: toIndex(40);
   }
   &__line {
     border-bottom: toIndex(4) solid #fff;
-    margin-bottom: toIndex(40);
+    margin-bottom: toIndex(80);
   }
   &__list {
-    margin-bottom: toIndex(55);
+    margin-bottom: toIndex(135);
   }
   &__list-item {
     &:not(:last-child) {
-      margin-bottom: toIndex(20);
+      margin-bottom: toIndex(40);
     }
     h4 {
       font-family: "RF Dewi";
       font-style: normal;
       font-weight: 400;
-      font-size: toIndex(20);
+      font-size: toIndex(40);
       line-height: 150%;
       letter-spacing: -0.033em;
       color: #fff;
@@ -44,12 +48,13 @@
       font-family: "RF Dewi";
       font-style: normal;
       font-weight: 400;
-      font-size: toIndex(20);
+      font-size: toIndex(40);
       line-height: 150%;
       letter-spacing: -0.033em;
       color: #505b5e;
     }
     &.disabled {
+      display: none;
       user-select: none;
       h4,
       p {
@@ -64,11 +69,12 @@
     font-family: "Manrope";
     font-style: normal;
     font-weight: 300;
-    font-size: 66px;
+    font-size: toIndex(115);
     line-height: 96%;
     letter-spacing: -0.033em;
-    gap: toIndex(8);
-    margin-bottom: toIndex(35);
+    gap: toIndex(20);
+    margin-bottom: toIndex(100);
+    flex-wrap: wrap;
     .new {
       color: #fff;
     }
@@ -87,12 +93,26 @@
     }
   }
   .btn {
+    &:first-of-type {
+      margin-top: auto;
+    }
     &:not(:last-child) {
       margin-bottom: toIndex(20);
     }
   }
-  &--standart {
-    background: rgba(255, 255, 255, 0.02);
+  &__notice {
+    font-family: "RF Dewi";
+    font-style: normal;
+    font-weight: 400;
+    font-size: toIndex(40);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #434c4f;
+    text-align: center;
+    margin-top: toIndex(50);
+  }
+  &--stantdart {
+    background: #091214;
   }
   &--premium {
     background: var(--color-yellow);
@@ -139,6 +159,43 @@
       &::before {
         background-color: #192224;
       }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .price-card {
+    padding: toIndex(30) toIndex(40) toIndex(60);
+    &__type {
+      font-size: toIndex(20);
+    }
+    &__title {
+      font-size: toIndex(50);
+      margin-bottom: toIndex(20);
+    }
+    &__line {
+      margin-bottom: toIndex(40);
+    }
+    &__list {
+      margin-bottom: toIndex(55);
+    }
+    &__list-item {
+      h4,
+      p {
+        font-size: toIndex(20);
+      }
+      &.disabled {
+        display: block;
+      }
+    }
+    &__value {
+      font-size: toIndex(65);
+      margin-bottom: toIndex(15);
+    }
+    &__notice {
+      margin-bottom: toIndex(35);
+      font-size: toIndex(20);
+      margin-top: 0;
     }
   }
 }

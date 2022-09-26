@@ -1,13 +1,17 @@
 .promo {
   margin-top: -60px;
   overflow: hidden;
+  padding-top: 17.5vh;
+  padding-bottom: 27.5vh;
   //   padding: 5vh 0;
   &__title {
     margin-left: -0.09em;
     margin-right: -0.09em;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 0 30px;
     font-family: "RF Dewi";
-    font-size: 76vh;
+    font-size: 30vh;
     line-height: 1;
     vertical-align: middle;
     letter-spacing: -0.09em;
@@ -67,6 +71,52 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .promo {
+    padding-bottom: 0;
+    padding-top: 16vh;
+    &__title {
+      font-size: 60vh;
+    }
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 1024px) {
+  .promo {
+    padding-top: 12vh;
+    &__title {
+      font-size: 52vh;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .promo {
+    padding-top: 0;
+    &__title {
+      font-size: 76vh;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .promo {
+    &__imgs-wrap {
+      height: 170%;
+      top: -30%;
+    }
+    &__img {
+      width: 16%;
+      &:nth-child(5) {
+        display: none;
+      }
+      &:nth-child(6) {
+        display: none;
+      }
     }
   }
 }

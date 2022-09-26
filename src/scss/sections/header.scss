@@ -31,3 +31,27 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .header {
+    .container {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    &__text {
+      position: absolute;
+      bottom: 0;
+      font-size: toIndex(40);
+      text-align: center;
+      left: 0;
+      margin-left: 0;
+      width: 100%;
+    }
+    &__our-goal {
+      font-size: toIndex(40);
+      max-width: toIndex(350);
+      margin-left: auto;
+      margin-top: toIndex(60);
+    }
+  }
+}
