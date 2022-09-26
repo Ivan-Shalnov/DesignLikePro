@@ -42,6 +42,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "disable-scroll": "^0.6.0",
     "focus-visible": "^5.2.0",
     "gsap": "^3.11.1",
     "normalize.css": "^8.0.1",

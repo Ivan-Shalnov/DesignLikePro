@@ -5,9 +5,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "../js/ScrollSmoother";
 import SplitText from "../js/SplitText";
 
+import { Preloader } from "./preloader/preloader";
+
 import "../scss/main.scss";
 import "../index.html";
-
+new Preloader("img, video", "[data-preloader]");
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 gsap.config({
   force3D: true,
