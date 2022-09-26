@@ -32,6 +32,10 @@ html {
   }
 }
 
+#smooth-content {
+  will-change: transform;
+}
+
 @function toIndex($value) {
   $resValue: calc((1vw + 1vh) * (#{$value} / 30));
   @return $resValue;

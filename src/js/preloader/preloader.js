@@ -26,7 +26,7 @@ export class Preloader {
     const containerHeight =
       this.REFS.preloader.offsetHeight - paddingY - borderY;
 
-    this.stepSizePx = (containerHeight * 0.8) / this.elementsAmount;
+    this.stepSizePx = (containerHeight * 1) / this.elementsAmount;
     this.init();
   }
   init() {

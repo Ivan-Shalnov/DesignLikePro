@@ -21,6 +21,7 @@
   &__wrap {
     position: relative;
     width: fit-content;
+    will-change: transform;
   }
   &__imgs-wrap {
     width: 100%;
