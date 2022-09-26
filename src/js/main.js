@@ -37,11 +37,12 @@ window.addEventListener("DOMContentLoaded", () => {
         anticipatePin: 1,
       },
     });
-    ease: "none",
-      promoTl.to(".promo__wrap", {
-        x: () => -getScrollLength(),
-        ease: "none",
-      });
+    promoTl.to(".promo__wrap", {
+      x: () => -getScrollLength(),
+      ease: "none",
+      lazy: false,
+    });
+    console.log("window.addEventListener ~ promoTl", promoTl);
     imgsRefs.forEach((el) => {
       gsap.to(el, {
         xPercent: -40,
