@@ -2,7 +2,7 @@
   --color-black: #040d0f;
   --color-white: #fff;
   --color-yellow: #f4e107;
-  --index: calc(1vw + 1vh);
+  --index: calc(var(--vw, 1vw) + var(--vh, 1vh));
 }
 
 // COLORS

@@ -37,15 +37,15 @@ html {
 }
 
 @function toIndex($value) {
-  $resValue: calc((1vw + 1vh) * (#{$value} / 30));
+  $resValue: calc((var(--vw, 1vw) + var(--vh, 1vh)) * (#{$value} / 30));
   @return $resValue;
 }
 @function toIndexTab($value) {
-  $resValue: calc((1vw + 1vh) * (#{$value} / 17.92));
+  $resValue: calc((var(--vw, 1vw) + var(--vh, 1vh)) * (#{$value} / 17.92));
   @return $resValue;
 }
 @function toIndexMob($value) {
-  $resValue: calc((1vw + 1vh) * (#{$value} / 11.87));
+  $resValue: calc((var(--vw, 1vw) + var(--vh, 1vh)) * (#{$value} / 11.87));
   @return $resValue;
 }
 

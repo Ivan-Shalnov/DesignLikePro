@@ -6,7 +6,10 @@ import ScrollSmoother from "../js/ScrollSmoother";
 import SplitText from "../js/SplitText";
 
 import { Preloader } from "./preloader/preloader";
-
+const vh = window.innerHeight * 0.01;
+const vw = window.innerWidth * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+document.documentElement.style.setProperty("--vw", `${vw}px`);
 import "../scss/main.scss";
 import "../index.html";
 new Preloader("img, video", "[data-preloader]");

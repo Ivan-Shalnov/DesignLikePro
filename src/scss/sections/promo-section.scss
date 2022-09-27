@@ -1,8 +1,8 @@
 .promo {
   margin-top: -60px;
   overflow: hidden;
-  padding-top: 17.5vh;
-  padding-bottom: 27.5vh;
+  padding-top: calc(var(--vh, 1vh) * 17.5);
+  padding-bottom: calc(var(--vh, 1vh) * 27.5);
   //   padding: 5vh 0;
   &__title {
     margin-left: -0.09em;
@@ -11,7 +11,7 @@
     margin-bottom: 0;
     padding: 0 30px;
     font-family: "RF Dewi";
-    font-size: 30vh;
+    font-size: calc(var(--vh, 1vh) * 30);
     line-height: 1;
     vertical-align: middle;
     letter-spacing: -0.09em;
@@ -79,18 +79,18 @@
 @media (min-width: 1024px) {
   .promo {
     padding-bottom: 0;
-    padding-top: 16vh;
+    padding-top: calc(var(--vh, 1vh) * 16);
     &__title {
-      font-size: 60vh;
+      font-size: calc(var(--vh, 1vh) * 60);
     }
   }
 }
 
 @media (min-width: 1200px) and (min-height: 1024px) {
   .promo {
-    padding-top: 12vh;
+    padding-top: calc(var(--vh, 1vh) * 12);
     &__title {
-      font-size: 52vh;
+      font-size: calc(var(--vh, 1vh) * 52);
     }
   }
 }
@@ -99,7 +99,7 @@
   .promo {
     padding-top: 0;
     &__title {
-      font-size: 76vh;
+      font-size: calc(var(--vh, 1vh) * 76);
     }
   }
 }

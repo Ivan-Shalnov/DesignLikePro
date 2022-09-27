@@ -1,5 +1,5 @@
 @function toIndex($value) {
-  $resValue: calc((1vw + 1vh) * (#{$value} / 30));
+  $resValue: calc((var(--vw) + var(--vh)) * (#{$value} / 30));
   @return $resValue;
 }
 
@@ -26,7 +26,7 @@
     min-width: 5em;
     position: absolute;
     overflow: hidden;
-    font-size: 19vh;
+    font-size: calc(var(--vh, 1vh) * 19);
     position: absolute;
     bottom: 0;
     right: 0;
