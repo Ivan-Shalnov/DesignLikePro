@@ -1,0 +1,49 @@
+.program-section {
+  margin-top: toIndex(300);
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: toIndex(20);
+  }
+  &__title {
+    font-family: "RF Dewi";
+    font-style: normal;
+    font-weight: 400;
+    font-size: toIndex(18);
+    line-height: 96%;
+    letter-spacing: -0.033em;
+    color: #f4e107;
+  }
+  &__tags {
+    display: flex;
+    gap: 6px;
+    li {
+      height: toIndex(48);
+      padding: 0 toIndex(30);
+      background-color: #fff;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      font-family: "RF Dewi";
+      font-style: normal;
+      font-weight: 400;
+      font-size: toIndex(18);
+      line-height: 96%;
+      letter-spacing: -0.033em;
+      color: #040d0f;
+      &:last-child {
+        background: #f4e107;
+      }
+    }
+  }
+  &__slide {
+    &:not(:last-child) {
+      margin-bottom: toIndex(30);
+    }
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
