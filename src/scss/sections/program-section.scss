@@ -41,8 +41,12 @@
     &:not(:last-child) {
       margin-bottom: toIndex(30);
     }
+    &:last-child {
+      position: relative;
+    }
     img {
       display: block;
+      height: 80vh;
       width: 100%;
     }
   }

@@ -12,7 +12,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 document.documentElement.style.setProperty("--vw", `${vw}px`);
 import "../scss/main.scss";
 import "../index.html";
-new Preloader("img, video", "[data-preloader]");
+// new Preloader("img, video", "[data-preloader]");
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 gsap.config({
   force3D: true,
@@ -61,6 +61,55 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
   // PROMO SECTION
+
+  // PROGRAM SECTION
+  {
+    const wrapRef = document.querySelector(".program-section__slides");
+    const headerRef = document.querySelector(".program-section__header");
+    const slides = gsap.utils.toArray(".program-section__slide");
+    console.log(headerRef.clientHeight);
+    const totalHeight = (el) => el.clientHeight;
+    ScrollTrigger.create({
+      trigger: headerRef,
+      start: "top 3%",
+      endTrigger: slides[slides.length - 1],
+      end: () => "top 10%",
+      pin: true,
+      markers: true,
+      pinSpacing: false,
+    });
+    slides.pop(); // get rid of the last one (don't need it in the loop)
+    slides.forEach((slide, i) => {
+      const { offsetHeight } = slide;
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: slide,
+          start: "bottom 90%",
+          pinSpacing: false,
+          end: "+=" + offsetHeight,
+          pin: true,
+          scrub: true,
+          markers: true,
+          onRefresh: () =>
+            gsap.set(slide, {
+              transformOrigin:
+                "center " + (offsetHeight - window.innerHeight / 2) + "px",
+            }),
+        },
+      });
+
+      tl.to({}, { duration: 5 })
+        .to(slide, {
+          rotateZ: 3,
+          yPercent: 4,
+          scale: 0.9,
+          duration: 5,
+        })
+        .set(slide, { opacity: 0 });
+    });
+  }
+  // PROGRAM SECTION
+
   // PRICE SECTION START
   {
     const priceTitleTl = gsap.timeline({
