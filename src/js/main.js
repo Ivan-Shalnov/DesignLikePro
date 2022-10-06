@@ -12,7 +12,13 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 document.documentElement.style.setProperty("--vw", `${vw}px`);
 import "../scss/main.scss";
 import "../index.html";
-// new Preloader("img, video", "[data-preloader]");
+
+new Preloader({
+  mediaSelector: "img, video",
+  preloaderSelector: "[data-preloader]",
+  stepsAmount: 7,
+});
+
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 gsap.config({
   force3D: true,

@@ -5,7 +5,12 @@ export class Preloader {
   REFS = {};
   currentStep = 0;
   currentProgress = 0;
-  constructor(mediaSelector, preloaderSelector) {
+  stepCost = 0;
+  steps = [0];
+  visibleProgress = 0;
+  nextVisibleProgress = 0;
+  timeline = gsap.timeline();
+  constructor({ mediaSelector, preloaderSelector, stepsAmount }) {
     this.REFS = {
       preloader: document.querySelector(preloaderSelector),
       progressValue: document.querySelector(
@@ -13,6 +18,13 @@ export class Preloader {
       ),
       elements: document.querySelectorAll(mediaSelector),
     };
+    const stepCost = 100 / stepsAmount;
+    for (let i = 1; i <= stepsAmount; i += 1) {
+      const step = Math.ceil(stepCost * i);
+      this.steps.push(step);
+    }
+    this.nextVisibleProgress = this.steps[1];
+    this.stepCost = 100 / this.REFS.elements.length;
     this.elementsAmount = this.REFS.elements.length;
     this.step = 100 / (this.elementsAmount - 1);
     this.futureProgress = this.step;
@@ -26,7 +38,8 @@ export class Preloader {
     const containerHeight =
       this.REFS.preloader.offsetHeight - paddingY - borderY;
 
-    this.stepSizePx = (containerHeight * 1) / this.elementsAmount;
+    this.stepSizePx = (containerHeight * 0.8) / (this.steps.length - 1);
+    console.log("Preloader ~ constructor ~ this.stepSizePx", this.stepSizePx);
     this.init();
   }
   init() {
@@ -51,38 +64,70 @@ export class Preloader {
     });
   }
   elementLoaded = (event) => {
+    this.currentProgress += this.stepCost;
+    const snappedProgress = gsap.utils.snap(this.steps, this.currentProgress);
+
+    if (snappedProgress === this.visibleProgress) {
+      console.log("Skip");
+      return;
+    }
+
+    // const valueIdx = this.steps.indexOf(snappedProgress);
+    // this.visibleProgress = snappedProgress;
+    // this.nextVisibleProgress = this.steps[valueIdx + 1];
+    // this.renderProgress({
+    //   current: this.visibleProgress,
+    //   future: this.nextVisibleProgress,
+    // });
+
     if (this.tween) {
       this.tween = this.tween.then(() => {
-        if (this.futureProgress >= 100) {
+        if (snappedProgress === 100) {
           // this.createNumbersTl().then(this.hidePreloader);
           this.hidePreloader();
           return;
         }
-        this.nextStep();
-        this.renderProgress();
+        // this.nextStep();
+        this.currentStep += 1;
+        const valueIdx = this.steps.indexOf(snappedProgress);
+        const current = snappedProgress;
+        const future = this.steps[valueIdx + 1];
+        this.nextVisibleProgress = this.steps[valueIdx + 1];
+
+        this.renderProgress({ current, future });
         return this.createNumbersTl();
       });
+      this.visibleProgress = snappedProgress;
     } else {
-      console.log(this.currentProgress);
+      // console.log(this.currentProgress);
+      // this.nextStep();
+      this.currentStep += 1;
+      const valueIdx = this.steps.indexOf(snappedProgress);
+      const current = snappedProgress;
+      const future = this.steps[valueIdx + 1];
+      this.nextVisibleProgress = this.steps[valueIdx + 1];
+      this.renderProgress({ current, future });
 
-      this.nextStep();
-      this.renderProgress();
       this.tween = this.createNumbersTl();
+      this.visibleProgress = snappedProgress;
     }
   };
-  nextStep() {
-    this.currentStep += 1;
-    this.currentProgress = this.futureProgress;
-    if (this.currentProgress >= 100) this.futureProgress = 100;
-    else this.futureProgress = this.currentProgress + this.step;
-  }
-  renderProgress() {
-    const currentProgressMarkup = Math.round(this.currentProgress)
+  // nextStep() {
+
+  //   // this.currentStep += 1;
+  //   // //   const valueIdx = this.steps.indexOf(snappedProgress);
+
+  //   // this.currentProgress = this.steps;
+  //   // if (this.currentProgress >= 100) this.futureProgress = 100;
+  //   // else this.futureProgress = this.currentProgress + this.step;
+  // }
+  renderProgress({ current, future }) {
+    const currentProgressMarkup = current
       .toString()
       .split("")
       .map((char) => `<div>${char}</div>`)
       .join("");
-    const futureProgressMarkup = Math.round(this.futureProgress)
+    const futureProgressMarkup = future
       .toString()
       .split("")
       .map((char) => `<div>${char}</div>`)
