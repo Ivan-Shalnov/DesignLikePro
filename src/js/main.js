@@ -12,7 +12,7 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 document.documentElement.style.setProperty("--vw", `${vw}px`);
 import "../scss/main.scss";
 import "../index.html";
-new Preloader("img, video", "[data-preloader]");
+// new Preloader("img, video", "[data-preloader]");
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 gsap.config({
   force3D: true,
@@ -32,42 +32,42 @@ window.addEventListener("DOMContentLoaded", () => {
   {
     let mm = gsap.matchMedia();
     // add a media query. When it matches, the associated function will run
-    mm.add("(min-width: 768px)", () => {
-      const wrapRef = document.querySelector(".promo__wrap");
-      const imgsRefs = wrapRef.querySelectorAll(".promo__img");
-      const getScrollLength = () =>
-        ((wrapRef.scrollWidth - document.body.clientWidth) / 100) * 97.5;
-      const promoTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".pin-wrap",
-          start: "top top",
-          end: () => getScrollLength() + "px",
-          scrub: 1,
-          pin: true,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-        },
-      });
-      promoTl.to(".promo__wrap", {
-        x: () => -getScrollLength(),
-        ease: "none",
-        lazy: false,
-      });
-      imgsRefs.forEach((el) => {
-        gsap.to(el, {
-          xPercent: -40,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            containerAnimation: promoTl,
-            start: "left right",
-            scrub: true,
-            horizontal: true,
-          },
-        });
-      });
+
+    const wrapRef = document.querySelector(".promo__wrap");
+    const imgsRefs = wrapRef.querySelectorAll(".promo__img");
+    const getScrollLength = () =>
+      ((wrapRef.scrollWidth - document.body.clientWidth) / 100) * 97.5;
+    const promoTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".pin-wrap",
+        start: "top top",
+        end: () => getScrollLength() + "px",
+        scrub: true,
+        pin: true,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+      },
     });
+    promoTl.to(".promo__wrap", {
+      x: () => -getScrollLength(),
+      ease: "none",
+      lazy: false,
+    });
+    // imgsRefs.forEach((el) => {
+    //   gsap.to(el, {
+    //     xPercent: -40,
+    //     ease: "none",
+    //     scrollTrigger: {
+    //       trigger: el,
+    //       containerAnimation: promoTl,
+    //       start: "left right",
+    //       scrub: true,
+    //       horizontal: true,
+    //     },
+    //   });
+    // });
   }
+
   // PROMO SECTION
 
   // PROGRAM SECTION
