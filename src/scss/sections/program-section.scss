@@ -38,6 +38,8 @@
     }
   }
   &__slide {
+    border-radius: 23px;
+    background-color: red;
     &:not(:last-child) {
       margin-bottom: toIndex(30);
     }
@@ -48,6 +50,73 @@
       display: block;
       height: 80vh;
       width: 100%;
+    }
+  }
+  &--bgcolor-black {
+    background: #162225;
+  }
+  &--bgcolor-white {
+    background: #ffffff;
+  }
+  &--bgcolor-blue {
+    background: #0026ad;
+  }
+  &--bgcolor-yellow {
+    background: #f4e107;
+  }
+  &--bgcolor-grey {
+    background: #303f44;
+  }
+  &--bgcolor-crimson {
+    background: #ad0049;
+  }
+  &--bgcolor-purple {
+    background: #700a94;
+  }
+  &--bgcolor-green {
+    background: #469123;
+  }
+}
+@media (min-width: 1200px) {
+  .program-section {
+    &__slide {
+      img.mobile {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .program-section {
+    margin-top: toIndexMob(110);
+    margin-bottom: toIndexMob(160);
+    &__header {
+      margin-bottom: toIndexMob(20);
+    }
+    &__title {
+      font-size: toIndexMob(16);
+    }
+    &__tags {
+      li {
+        height: toIndexMob(45);
+        padding: 0 toIndexMob(28);
+        font-size: toIndexMob(16);
+      }
+      li:not(.mobile) {
+        display: none;
+      }
+    }
+    &__slide {
+      &:not(:last-child) {
+        margin-bottom: toIndexMob(20);
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      img:not(.mobile) {
+        display: none;
+      }
     }
   }
 }
