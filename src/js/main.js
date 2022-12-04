@@ -50,6 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
         end: () => getScrollLength() + "px",
         scrub: true,
         pin: true,
+        // markers: true,
         invalidateOnRefresh: true,
         anticipatePin: 1,
       },
@@ -93,7 +94,7 @@ window.addEventListener("DOMContentLoaded", () => {
         endTrigger: slides[slides.length - 1],
         end: () => "top 10%",
         pin: true,
-        markers: true,
+        // markers: true,
         pinSpacing: false,
       });
       slides.pop(); // get rid of the last one (don't need it in the loop)
@@ -107,7 +108,7 @@ window.addEventListener("DOMContentLoaded", () => {
             end: "+=" + offsetHeight,
             pin: true,
             scrub: true,
-            markers: true,
+            // markers: true,
             onRefresh: () =>
               gsap.set(slide, {
                 transformOrigin:
