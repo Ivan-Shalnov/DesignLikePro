@@ -1,8 +1,0 @@
-@mixin stop-scroll {
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
-}
